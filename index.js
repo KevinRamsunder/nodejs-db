@@ -53,7 +53,7 @@ var app = express();
 // Routing
 app.get('/', function(request, response) {
     poolDatabaseConnections(request, response);
-    return '<html><body><h1>Working.</h1></body></html>';
+    response.send('<html><body><h1>Working.</h1></body></html>');
 });
 
 // Listen for connections on port 3000
