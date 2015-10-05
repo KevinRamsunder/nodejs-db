@@ -19,7 +19,7 @@ function poolDatabaseConnections(request, response) {
         
         // if you could not connect, quit
         if(error) {
-            connecion.release();
+            connection.release();
             request.json({'code' : 100, 'status' : 'Could not connect to the database.'});
             return;
         } 
