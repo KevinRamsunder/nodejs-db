@@ -1,14 +1,15 @@
 var mysql = require('mysql');
 var express = require('express');
+var config = require('./config');
 
 // Initialize database pool for multiple users at a time
 var connectionPool = mysql.createPool({
-    connectionLimit: 100,
-    host: '127.0.0.1',
-    user: 'root',
-    password: '',
-    database: 'FlushingFood',
-    debug: false
+    connectionLimit: config.db.connectionLimit,
+    host: config.db.host,
+    user: config.db.user,
+    password: config.db.password,
+    database: config.db.databaseName,
+    debug: config.db.debugging
 });
 
 // Handle incoming connections to the database
@@ -46,7 +47,6 @@ function poolDatabaseConnections(request, response) {
         })
     });
 }
-
 
 var app = express();
 
