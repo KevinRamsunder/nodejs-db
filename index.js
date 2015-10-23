@@ -49,12 +49,12 @@ function poolDatabaseConnections(request, response) {
 }
 
 var app = express();
+app.use(express.static(__dirname + '/public'));
 
 // Routing
 app.get('/', function(request, response) {
     poolDatabaseConnections(request, response);
-    response.send('<html><body><h1>Working.</h1></body></html>');
 });
 
-// Listen for connections on port 3000
-app.listen(3000);
+// Listen for connections on port 8000
+app.listen(8000);
